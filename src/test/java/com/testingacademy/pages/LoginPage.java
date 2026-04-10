@@ -16,7 +16,6 @@ public class LoginPage {
     By username = By.id("username");
     By password = By.id("password");
     By login = By.className("radius");
-    By message = By.id("flash");
 
     public void enterUsername(String user) {
         driver.findElement(username).clear();
