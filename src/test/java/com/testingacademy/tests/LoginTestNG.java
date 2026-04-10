@@ -1,28 +1,11 @@
 package com.testingacademy.tests;
 
+import com.testingacademy.base.BaseTest;
 import com.testingacademy.pages.LoginPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginTestNG {
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://the-internet.herokuapp.com/login");
-    }
-
-    @AfterMethod
-    public void teardown() {
-        driver.quit();
-    }
-
+public class LoginTestNG extends BaseTest {
     @Test
     public void validLogin() {
         LoginPage loginPage = new LoginPage(driver);
