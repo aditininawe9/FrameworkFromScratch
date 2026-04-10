@@ -2,6 +2,11 @@ package com.testingacademy.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
     private WebDriver driver;
@@ -10,7 +15,7 @@ public class LoginPage {
     }
     By username = By.id("username");
     By password = By.id("password");
-    By login = By.className("login");
+    By login = By.className("radius");
     By message = By.id("flash");
 
     public void enterUsername(String user) {
@@ -34,10 +39,18 @@ public class LoginPage {
     }
 
     public String getSuccessMessage() {
-        return driver.findElement(message).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement message = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.id("flash"))
+        );
+        return message.getText();
     }
 
     public String getFailureMessage() {
-        return driver.findElement(message).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement message = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.id("flash"))
+        );
+        return message.getText();
     }
 }
